@@ -1,0 +1,178 @@
+mixin block3(_id)
+    table(id=_id).block3
+        tr
+            td.block.bl
+            td.block.bc
+                table.blockTable
+                    tr
+                        block
+            td.block.br
+
+mixin block2(_id,_img)
+    table(id=_id).block2
+        tr
+            td.block.bl
+                img(src=_img)
+
+            td.block.br
+                block
+
+mixin block1(_id)
+    table(id=_id).block1
+        tr
+            td.block
+                block
+
+mixin circBlock(_url,_title,_txt)
+    td.circBlock
+        img(src=_url,alt=_title)
+        strong= _title
+        p= _txt
+
+doctype html
+
+html(lang='en')
+
+    head
+
+        meta(charset='UTF-8')
+
+        title= "Chuze Email Template"
+
+        link(href = 'css/main.css', rel = 'stylesheet')/
+        link(href='http://fonts.googleapis.com/css?family=Open+Sans',rel='stylesheet',type='text/css',data-embed-ignore)/
+
+    body
+
+        #main
+
+            +block3('topBar')
+
+                td.left
+
+                    | Having Trouble viewing this email?
+
+                    a(href='')
+
+                        | View it in your browser
+
+                td.right
+
+                    | &gt;
+                    a(href='')
+
+                        |Online Version
+
+                    | &gt;
+                    a(href='')
+
+                        | Forward To a Friend
+
+
+            +block1('topLogo')
+
+                a(href="")
+
+                    img(src='img/top_logo.jpg',alt="Chuze")
+
+
+            +block3('section1')
+
+                h1
+                    strong Chuze
+                    |  More.
+
+                h3
+                    | Happy New Year to you all.
+
+                p
+                    | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt tortor eget eros dictum, sit amet ultricies lacus faucibus. Integer molestie m
+
+
+            +block1('topDivide')
+
+                img(src='img/top_divide.jpg')
+
+
+            +block3('section2')
+
+                h3
+                    | The
+                    strong  More
+                    |  memberships is now available at Chuze Fullerton
+
+                p
+                    | Donec tincidunt tortor eget eros dictum, sit amet ultricies lacus faucibus. Integer molestie m
+
+
+            +block3('section3')
+
+                +circBlock("img/circ_1.jpg", "Unlimited", "Team Training Sessions")
+
+                +circBlock("img/circ_2.jpg", "Unlimited", "Team Training Sessions")
+
+                +circBlock("img/circ_3.jpg", "20% Off", "Chuze Heart Rate Monitor")
+
+
+            +block3('section4')
+
+                p
+                    | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt tortor eget eros dictum, sit amet ultricies lacus faucibus. Integer molestie m
+
+                p
+                    | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt tortor eget eros dictum, sit amet ultricies lacus faucibus. Integer molestie m
+
+
+            +block2('section5',"img/gym_shot.jpg")
+
+                p
+                    strong &#8220;
+                    |  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt tortor eget eros dictum, sit amet ultricies
+
+                hr
+
+                span.quote Brett Hoebel
+
+
+            +block1('section6')
+
+                h1
+
+                    strong Chuze
+                    |  to do more.
+
+                a(href="") Upgrade Today
+
+
+            +block3('section7')
+
+                td.left
+
+                    img(src="img/bot_logo.jpg",alt="Chuze")
+
+                td.right
+
+                    a(href="") Classes
+
+                    a(href="") Personal Training
+
+                    a(href="") Locations
+
+
+            +block3('section8')
+
+                td.left &copy; 2016 Chuze Fitness. All Rights Reserved
+
+                td.right
+
+                    a(href="")
+                        img(src="img/soc_fb.jpg",alt="Facebook")
+
+                    a(href="")
+                        img(src="img/soc_tw.jpg",alt="Twitter")
+
+                    a(href="")
+                        img(src="img/soc_gp.jpg",alt="Google Plus")
+
+                    a(href="")
+                        img(src="img/soc_li.jpg",alt="LinkedIn")

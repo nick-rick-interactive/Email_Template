@@ -1,0 +1,43 @@
+{
+  "devDependencies": {
+    "apache-server-configs": "2.14.0",
+    "browser-sync": "^2.11.1",
+    "del": "^1.1.1",
+    "gulp": "^3.9.0",
+    "gulp-assetpaths": "^0.1.2",
+    "gulp-data": "^1.2.1",
+    "gulp-gulp": "^0",
+    "gulp-if": "^2.0.0",
+    "gulp-imagemin": "^2.4.0",
+    "gulp-inline-css": "^3.0.0",
+    "gulp-jade": "^1",
+    "gulp-plumber": "^1.0.1",
+    "gulp-rename": "^1.2.0",
+    "gulp-sass": "^2.1.1",
+    "gulp-zip": "^3.0.2",
+    "imagemin-jpegtran": "^4.3.2",
+    "imagemin-pngquant": "^4.2.0",
+    "path": "^0.12.7",
+    "run-sequence": "^1.0.2",
+    "yargs": "^3"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "configs": {
+    "directories": {
+      "prod": "prod",
+      "dev": "dev"
+    }
+  },
+  "license": {
+    "type": "MIT"
+  },
+  "name": "EmailTemplate",
+  "private": true,
+  "scripts": {
+    "build": "gulp build",
+    "test": "gulp archive && mocha --reporter spec --timeout 5000"
+  },
+  "version": "1.0.0"
+}

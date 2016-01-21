@@ -1,0 +1,251 @@
+body, div, table, tbody, td, img {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  vertical-align: top; }
+
+img {
+  outline: none; }
+
+table {
+  border-spacing: 0; }
+
+td {
+  height: 100%;
+  vertical-align: middle; }
+
+h1, h2, h3, h4, h5, h6, p, a, strong {
+  margin: 0;
+  padding: 0;
+  line-height: 1; }
+
+/**
+ VARS
+ **/
+/**
+ JADE MIXINS
+ **/
+.block3 {
+  text-align: center;
+  width: 100%; }
+  .block3 .block.bl {
+    width: 65px; }
+  .block3 .block.bc {
+    text-align: center;
+    width: 420px; }
+    .block3 .block.bc .blockTable {
+      width: 100%; }
+  .block3 .block.br {
+    width: 65px; }
+
+.block1 {
+  text-align: center;
+  width: 100%; }
+  .block1 .block {
+    width: 100%;
+    text-align: center; }
+
+body {
+  background-color: #220000; }
+
+#main {
+  position: relative;
+  display: block;
+  width: 550px;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-style: italic;
+  font-weight: 300; }
+  #main #topBar {
+    height: 30px;
+    background-color: #32353a;
+    border-bottom: 1px solid #5d6063; }
+    #main #topBar .blockTable td {
+      color: #48a8e4;
+      width: 50%;
+      font-size: 6px; }
+      #main #topBar .blockTable td a {
+        color: #48a8e4; }
+      #main #topBar .blockTable td.left {
+        text-align: left; }
+        #main #topBar .blockTable td.left a {
+          margin: 0 0 0 5px; }
+      #main #topBar .blockTable td.right {
+        text-align: right; }
+        #main #topBar .blockTable td.right a:nth-child(1) {
+          margin: 0 10px 0 0; }
+  #main #topLogo {
+    height: 50px;
+    background-color: #26292d; }
+  #main #section1 {
+    height: auto;
+    padding: 40px 0 40px 0;
+    background-color: #48a8e4; }
+    #main #section1 h1 {
+      color: #fafafa;
+      font-size: 50px;
+      margin: 0 0 20px 0; }
+      #main #section1 h1 strong {
+        color: #f3cc2f; }
+    #main #section1 h3 {
+      color: #fafafa;
+      font-size: 20px;
+      font-weight: 100;
+      margin: 0 0 20px 0; }
+    #main #section1 p {
+      color: #fafafa;
+      font-size: 16px;
+      line-height: 1.5;
+      font-weight: 100; }
+  #main #topDivide {
+    height: 25px; }
+    #main #topDivide img {
+      width: 100%;
+      height: 100%; }
+  #main #section2 {
+    height: auto;
+    padding: 30px 0 30px 0;
+    background-color: #fafafa;
+    text-align: center; }
+    #main #section2 h3 {
+      color: #48a8e4;
+      font-size: 20px;
+      font-weight: 100;
+      margin: 0 0 20px 0;
+      line-height: 1.5;
+      width: 80%;
+      display: inline-block; }
+      #main #section2 h3 strong {
+        color: #f3cc2f; }
+    #main #section2 p {
+      color: #26292d;
+      font-size: 10px;
+      line-height: 1.5;
+      font-weight: 100;
+      font-style: normal; }
+  #main #section3 {
+    height: auto;
+    padding: 0 0 25px 0;
+    background-color: #fafafa; }
+    #main #section3 .bc {
+      border-top: solid 1px #f5f5f5; }
+    #main #section3 .circBlock {
+      width: 33.333%;
+      padding: 25px 0 0 0;
+      text-align: center;
+      font-style: normal; }
+      #main #section3 .circBlock img {
+        margin: 0 0 15px 0; }
+      #main #section3 .circBlock strong {
+        color: #48a8e4;
+        text-transform: uppercase;
+        font-size: 14px;
+        margin: 0 0 2px 0;
+        display: block; }
+      #main #section3 .circBlock p {
+        color: #26292d;
+        text-transform: uppercase;
+        font-size: 8px; }
+  #main #section4 {
+    height: auto;
+    padding: 20px 0 40px 0;
+    background-color: #fafafa;
+    text-align: center; }
+    #main #section4 p {
+      display: block;
+      margin: 0 0 20px 0;
+      line-height: 1.5;
+      color: #26292d;
+      font-size: 8px; }
+  #main #section5 {
+    height: auto;
+    background-color: #f5f5f5;
+    text-align: center; }
+    #main #section5 .bl {
+      width: 50%; }
+      #main #section5 .bl img {
+        height: 100%;
+        width: 100%; }
+    #main #section5 .br {
+      width: 50%;
+      padding: 40px;
+      text-align: left;
+      font-style: normal; }
+      #main #section5 .br p {
+        color: #797c81;
+        text-transform: uppercase;
+        font-size: 12px;
+        line-height: 2;
+        font-weight: 700; }
+        #main #section5 .br p strong {
+          font-size: 30px;
+          color: #48a8e4;
+          margin: -5px 5px -4px 0; }
+      #main #section5 .br hr {
+        display: inline-block;
+        width: 30px;
+        border: 0;
+        border-bottom: 1px solid #48a8e4;
+        text-align: left; }
+      #main #section5 .br span.quote {
+        display: block;
+        font-size: 10px;
+        color: #797c81; }
+  #main #section6 {
+    height: auto;
+    padding: 75px 0 75px 0;
+    background-color: #48a8e4;
+    text-align: center;
+    border-top: #f5f5f5 1px solid; }
+    #main #section6 h1 {
+      color: #fafafa;
+      font-size: 50px;
+      margin: 0 0 30px 0; }
+      #main #section6 h1 strong {
+        color: #f3cc2f; }
+    #main #section6 a {
+      display: inline-block;
+      padding: 15px 25px;
+      color: #fafafa;
+      font-size: 12px;
+      font-style: normal;
+      background-color: #f3cc2f;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: 700; }
+  #main #section7 {
+    height: auto;
+    background-color: #f5f5f5;
+    color: #6e7277; }
+    #main #section7 .bc {
+      border-bottom: 1px solid #e5e5e5;
+      padding: 25px 0 25px 0; }
+    #main #section7 .left {
+      width: 33.333%;
+      text-align: left; }
+    #main #section7 .right {
+      width: 66.666%;
+      text-align: right; }
+      #main #section7 .right a {
+        color: #6e7277;
+        font-size: 12px;
+        text-decoration: none;
+        margin: 0 0 0 15px;
+        font-style: normal; }
+  #main #section8 {
+    height: auto;
+    padding: 25px 0 25px 0;
+    background-color: #f5f5f5;
+    color: #6e7277; }
+    #main #section8 .left {
+      width: 50%;
+      text-align: left;
+      color: #6e7277;
+      font-size: 10px;
+      text-decoration: none;
+      margin: 0 0 0 15px;
+      font-style: normal; }
+    #main #section8 .right {
+      width: 50%;
+      text-align: right; }
+      #main #section8 .right a {
+        margin: 0 0 0 10px; }

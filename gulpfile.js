@@ -1,7 +1,9 @@
 // Import all necessary modules
 var gulp      = require( 'gulp' ),
     gulpIf    = require( 'gulp-if' ),
-    path      = require('path'),
+    path      = require( 'path'),
+    fs        = require( 'fs'),
+    email     = require( 'gulp-email'),
     sass      = require( 'gulp-sass' ),
     jade      = require( 'gulp-jade' ),
     inlineCss = require( 'gulp-inline-css' ),
@@ -12,6 +14,7 @@ var gulp      = require( 'gulp' ),
     plumber   = require( 'gulp-plumber' ),
     rename    = require( 'gulp-rename' ),
     data      = require( 'gulp-data' ),
+    htmlStrip      = require( 'htmlstrip-native' ),
     pkg = require('./package.json'),
     dirs = pkg['configs'].directories;
 
@@ -24,16 +27,15 @@ var src = {
 
 // Inliner task operations wrapped into a helper function
 function inliner( srcFolder, srcFile, destFolder, destFile ) {
-    console.log(destFile);
     return gulp.src( srcFolder + srcFile )
         .pipe( inlineCss({
             applyStyleTags:  false,
             removeStyleTags: false,
             applyLinkTags:   true,
-            removeLinkTags:  true
+            removeLinkTags:  false
         }))
         .pipe(gulpIf(destFile=='template.html',assetPaths({
-            newDomain: 'www.thenewdomain.com',
+            newDomain: context.imageUrl,
             oldDomain: 'img/',
             docRoot : "./",
             filetypes : ['jpg','jpeg','png'],
@@ -64,10 +66,12 @@ gulp.task('copy:images', function () {
 // Task: Render template.html populated with data and save it as preview.html
 gulp.task( 'render', function() {
     return gulp.src( src.jade )
-        .pipe(data(function(file) {
-            return context;
-        }))
-        .pipe( jade() )
+        /*.pipe(data(function(file) {
+            return JSON.stringify(context);
+        }))*/
+        .pipe( jade({
+            data: JSON.parse( fs.readFileSync("./" + dirs.dev + '/vars.json', { encoding: 'utf8' }) )
+        }) )
         .pipe( rename( 'preview.html' ) )
         .pipe( gulp.dest( dirs.prod ) );
 });
@@ -102,4 +106,28 @@ gulp.task( 'serve', function() {
 // Task: Default (run everything once, in sequence, and start server)
 gulp.task( 'default', function() {
     sequence(  'sass', 'copy:images', 'render', 'inlinePreview', 'inlineTemplate', 'serve' );
+});
+
+gulp.task( 'email', function() {
+    var templateContent = fs.readFileSync(dirs.prod + "/template/template.html", encoding = "utf8");
+    var stripOptions = {
+        include_script : false,
+        include_style : false,
+        compact_whitespace : true,
+        include_attributes : { 'alt': true }
+    };
+    var emailOptions = {
+        user: pkg['configs'].mailgun.user,
+        url: pkg['configs'].mailgun.url,
+        form: {
+            from: 'Email Test <email.tester@gmail.com>',
+            to: 'Tester <nick.rick.interactive@gmail.com>',
+            /*cc: 'Regis Messac <regis.messac@gmail.com>',
+            bcc: 'John Smith <john.smith@gmail.com>',*/
+            subject: context.name+' Test',
+            text: htmlStrip.html_strip(templateContent, stripOptions)
+        }
+    }
+    return gulp.src([dirs.prod + "/template/template.html"])
+        .pipe(email(emailOptions));
 });

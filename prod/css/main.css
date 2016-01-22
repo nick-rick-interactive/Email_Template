@@ -52,8 +52,9 @@ body {
   position: relative;
   display: block;
   width: 550px;
-  font-family: "flexomedium", Arial, sans-serif;
-  font-style: italic; }
+  font-weight: 300;
+  font-family: Verdana, sans-serif;
+  font-style: normal; }
   #main #topBar {
     height: 30px;
     background-color: #32353a;
@@ -81,21 +82,27 @@ body {
     background-color: #48a8e4; }
     #main #section1 h1 {
       color: #fafafa;
-      font-size: 70px;
+      font-size: 50px;
       margin: 0 0 20px 0;
-      font-family: "flexobold_italic", Arial, sans-serif; }
+      font-weight: 700;
+      font-family: Verdana, sans-serif;
+      font-style: italic; }
       #main #section1 h1 strong {
         color: #f3cc2f; }
     #main #section1 h3 {
       color: #fafafa;
       font-size: 20px;
-      font-family: "flexomedium_italic", Arial, sans-serif;
+      font-weight: 300;
+      font-family: Verdana, sans-serif;
+      font-style: italic;
       margin: 0 0 20px 0; }
     #main #section1 p {
       color: #fafafa;
       font-size: 16px;
       line-height: 1.5;
-      font-family: "flexomedium_italic", Arial, sans-serif; }
+      font-weight: 300;
+      font-family: Verdana, sans-serif;
+      font-style: italic; }
   #main #topDivide {
     height: 25px; }
     #main #topDivide img {
@@ -140,7 +147,9 @@ body {
         text-transform: uppercase;
         font-size: 14px;
         margin: 0 0 2px 0;
-        font-family: "flexobold", Arial, sans-serif;
+        font-weight: 700;
+        font-family: Verdana, sans-serif;
+        font-style: normal;
         display: block; }
       #main #section3 .circBlock p {
         color: #26292d;
@@ -176,7 +185,9 @@ body {
         text-transform: uppercase;
         font-size: 12px;
         line-height: 2;
-        font-family: "flexobold", Arial, sans-serif; }
+        font-weight: 700;
+        font-family: Verdana, sans-serif;
+        font-style: normal; }
         #main #section5 .br p strong {
           font-size: 30px;
           color: #48a8e4;

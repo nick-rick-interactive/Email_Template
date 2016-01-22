@@ -8,10 +8,12 @@ var gulp      = require( 'gulp' ),
     jade      = require( 'gulp-jade' ),
     inlineCss = require( 'gulp-inline-css' ),
     assetPaths = require( 'gulp-assetpaths' ),
+    gutil     = require( 'gulp-util' ),
     bs        = require( 'browser-sync' ).create(),
     sequence  = require( 'run-sequence' ),
     imagemin  = require( 'gulp-imagemin' ),
     plumber   = require( 'gulp-plumber' ),
+    beep      = require( 'beepbeep' ),
     rename    = require( 'gulp-rename' ),
     data      = require( 'gulp-data' ),
     htmlStrip      = require( 'htmlstrip-native' ),
@@ -25,9 +27,18 @@ var src = {
     img:    dirs.dev + "/img/**"
 }
 
+//Plumber Hanlder
+var onError = function (err) {
+    beep([0, 0, 0]);
+    gutil.log(gutil.colors.red(err));
+};
+
 // Inliner task operations wrapped into a helper function
 function inliner( srcFolder, srcFile, destFolder, destFile ) {
     return gulp.src( srcFolder + srcFile )
+        .pipe(plumber({
+            errorHandler: onError
+        }))
         .pipe( inlineCss({
             applyStyleTags:  false,
             removeStyleTags: false,
@@ -48,7 +59,9 @@ function inliner( srcFolder, srcFile, destFolder, destFile ) {
 // Task: Compile stylesheet.sass and save it as stylesheet.css
 gulp.task( 'sass', function() {
     gulp.src( src.sass )
-        .pipe( plumber() )                 // report errors w/o stopping Gulp
+        .pipe(plumber({
+            errorHandler: onError
+        }))
         .pipe( sass() )
         .pipe( rename( 'main.css' ) )
         .pipe( gulp.dest( dirs.prod + "/css" ) );
@@ -66,6 +79,9 @@ gulp.task('copy:images', function () {
 // Task: Render template.html populated with data and save it as preview.html
 gulp.task( 'render', function() {
     return gulp.src( src.jade )
+        .pipe(plumber({
+            errorHandler: onError
+        }))
         /*.pipe(data(function(file) {
             return JSON.stringify(context);
         }))*/

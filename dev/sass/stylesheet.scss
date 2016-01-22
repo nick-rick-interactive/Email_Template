@@ -14,12 +14,14 @@ $lightGrey: #f5f5f5;
 $grey: #6e7277;
 $darkGrey: #32353a;
 
-$f-black: 'flexoblack', Arial, sans-serif;
-$f-blacki: "flexoblack_italic", Arial, sans-serif;
-$f-bold: "flexobold", Arial, sans-serif;
-$f-boldi: "flexobold_italic", Arial, sans-serif;
-$f-medium: "flexomedium", Arial, sans-serif;
-$f-mediumi: "flexomedium_italic", Arial, sans-serif;
+$font: Verdana, sans-serif;
+
+@mixin useFont($weight:300, $style:normal){
+  font-weight: $weight;
+  font-family: $font;
+  font-style: $style;
+}
+
 
 /**
  JADE MIXINS
@@ -63,8 +65,7 @@ body{
   position: relative;
   display: block;
   width:550px;
-  font-family: $f-medium;
-  font-style: italic;
+  @include useFont(300);
 
   #topBar{
     height:30px;
@@ -113,9 +114,9 @@ body{
 
     h1{
       color:$white;
-      font-size: 70px;
+      font-size: 50px;
       margin: 0 0 20px 0;
-      font-family: $f-boldi;
+      @include useFont(700,italic);
 
       strong{
         color: $orange;
@@ -125,7 +126,7 @@ body{
     h3{
       color: $white;
       font-size: 20px;
-      font-family: $f-mediumi;
+      @include useFont(300,italic);
       margin: 0 0 20px 0;
     }
 
@@ -133,7 +134,7 @@ body{
       color: $white;
       font-size: 16px;
       line-height: 1.5;
-      font-family: $f-mediumi;
+      @include useFont(300,italic);
     }
   }
 
@@ -199,7 +200,7 @@ body{
         text-transform: uppercase;
         font-size: 14px;
         margin: 0 0 2px 0;
-        font-family: $f-bold;
+        @include useFont(700);
         display: block;
       }
 
@@ -251,7 +252,7 @@ body{
         text-transform: uppercase;
         font-size: 12px;
         line-height: 2;
-        font-family: $f-bold;
+        @include useFont(700);
 
         strong{
           font-size: 30px;

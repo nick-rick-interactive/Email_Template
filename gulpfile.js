@@ -16,7 +16,8 @@ var gulp      = require( 'gulp' ),
     beep      = require( 'beepbeep' ),
     rename    = require( 'gulp-rename' ),
     data      = require( 'gulp-data' ),
-    htmlStrip      = require( 'htmlstrip-native' ),
+    htmlReplace      = require( 'gulp-html-replace' ),
+    htmlClean      = require( 'gulp-htmlclean' ),
     pkg = require('./package.json'),
     dirs = pkg['configs'].directories;
 
@@ -125,7 +126,21 @@ gulp.task( 'default', function() {
 });
 
 gulp.task( 'email', function() {
-    var templateContent = fs.readFileSync(dirs.prod + "/template/template.html", encoding = "utf8");
+    sequence(  'strip-email', 'send-email' );
+});
+
+gulp.task( 'strip-email', function() {
+    return gulp.src([dirs.prod + "/template/template.html"])
+        .pipe(htmlReplace({
+            'css': '',
+            'js': ''
+        }))
+        .pipe(htmlClean())
+        .pipe( gulp.dest( dirs.prod + "/template/template_stripped.html") );
+});
+
+gulp.task( 'send-email', function() {
+    var templateContent = fs.readFileSync(dirs.prod + "/template/template_stripped.html", encoding = "utf8");
     var stripOptions = {
         include_script : false,
         include_style : false,
@@ -139,11 +154,11 @@ gulp.task( 'email', function() {
             from: 'Email Test <email.tester@gmail.com>',
             to: 'Tester <nick.rick.interactive@gmail.com>',
             /*cc: 'Regis Messac <regis.messac@gmail.com>',
-            bcc: 'John Smith <john.smith@gmail.com>',*/
+             bcc: 'John Smith <john.smith@gmail.com>',*/
             subject: context.name+' Test',
-            text: htmlStrip.html_strip(templateContent, stripOptions)
+            text: htmlReplace(templateContent, stripOptions)
         }
     }
-    return gulp.src([dirs.prod + "/template/template.html"])
+    return gulp.src([dirs.prod + "/template/template_stripped.html"])
         .pipe(email(emailOptions));
 });
